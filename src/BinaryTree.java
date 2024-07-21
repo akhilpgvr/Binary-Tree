@@ -38,32 +38,46 @@ public class BinaryTree {
     public void inorderTraversal(Node root) {
 
         if(root == null) return;
-        else{
-            inorderTraversal(root.leftChild);
-            System.out.print(" "+ root.data+ " ");
-            inorderTraversal(root.rightChild);
-        }
+        inorderTraversal(root.leftChild);
+        System.out.print(" "+ root.data+ " ");
+        inorderTraversal(root.rightChild);
     }
 
     //Performing Preorder traversal in binary tree
     public void preorderTraversal(Node root) {
 
         if(root == null) return;
-        else{
-            System.out.print(" "+ root.data+ " ");
-            preorderTraversal(root.leftChild);
-            preorderTraversal(root.rightChild);
-        }
+        System.out.print(" "+ root.data+ " ");
+        preorderTraversal(root.leftChild);
+        preorderTraversal(root.rightChild);
     }
 
     //Performing Postorder traversal in binary tree
     public void postorderTraversal(Node root) {
 
         if(root == null) return;
-        else{
-            postorderTraversal(root.leftChild);
-            postorderTraversal(root.rightChild);
-            System.out.print(" "+ root.data+ " ");
+        postorderTraversal(root.leftChild);
+        postorderTraversal(root.rightChild);
+        System.out.print(" "+ root.data+ " ");
+
+    }
+
+    public void search(int data) {
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            if(node == null) {
+                System.out.println("Element NotFound");
+                return;
+            }
+            if(node.data == data) {
+                System.out.println("Element Found");
+                return;
+            }
+            queue.offer(node.leftChild);
+            queue.offer(node.rightChild);
         }
     }
 }

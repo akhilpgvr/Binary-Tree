@@ -29,6 +29,10 @@ public class Main {
         binaryTree.postorderTraversal(binaryTree.root);
         System.out.println();
         System.out.println("...............................");
+        System.out.println("Binary tree Search");
+        System.out.println("...............................");
+        binaryTree.search(5);
+        binaryTree.search(10);
         System.out.println("...............................");
     }
 }

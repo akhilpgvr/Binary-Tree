@@ -66,8 +66,10 @@ public class BinaryTree {
 
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+        //traversing using queue
         while(!queue.isEmpty()) {
             Node node = queue.poll();
+            //checks until the node becomes null/empty
             if(node == null) {
                 System.out.println("Element NotFound");
                 return;
@@ -79,5 +81,27 @@ public class BinaryTree {
             queue.offer(node.leftChild);
             queue.offer(node.rightChild);
         }
+    }
+    
+    public void levelOrdering() {
+        
+        if(root == null) return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            System.out.print(node.data+ " ");
+            if(node.leftChild != null) queue.offer(node.leftChild);
+            if(node.rightChild != null) queue.offer(node.rightChild);
+        }
+    }
+
+    public void deleteNode(int data) {
+
+
+    }
+    public Node rightMostNode(Node root){
+        if(root.rightChild == null);
+        return null;
     }
 }

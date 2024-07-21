@@ -34,5 +34,10 @@ public class Main {
         binaryTree.search(5);
         binaryTree.search(10);
         System.out.println("...............................");
+        System.out.println("Level order search on binary tree");
+        System.out.println("...............................");
+        binaryTree.levelOrdering();
+        System.out.println();
+        System.out.println("...............................");
     }
 }

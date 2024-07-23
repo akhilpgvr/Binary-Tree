@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("...............................");
@@ -43,6 +46,20 @@ public class Main {
         System.out.println("...............................");
         binaryTree.deleteNode(3);
         binaryTree.deleteNode(1);
+        binaryTree.levelOrdering();
+        System.out.println();
+        System.out.println("...............................");
+        System.out.println("Deletion of deepest element on binary tree");
+        System.out.println("...............................");
+        Node node =null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(binaryTree.root);
+        while(!queue.isEmpty()) {
+            node = queue.poll();
+            if(node.leftChild != null) queue.offer(node.leftChild);
+            if(node.rightChild != null) queue.offer(node.rightChild);
+        }
+        binaryTree.deleteDeepest(node);
         binaryTree.levelOrdering();
         System.out.println();
         System.out.println("...............................");

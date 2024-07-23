@@ -90,12 +90,44 @@ public class BinaryTree {
         queue.offer(root);
         while(!queue.isEmpty()) {
             Node node = queue.poll();
-            System.out.print(node.data+ " ");
+            System.out.print(" "+ node.data+ " ");
             if(node.leftChild != null) queue.offer(node.leftChild);
             if(node.rightChild != null) queue.offer(node.rightChild);
         }
     }
 
+    public void deleteDeepest(Node key) {
+
+        if(root==null) return;
+
+        //checking root is null
+        if(root.leftChild==null && root.rightChild==null) if(root==key) root=null;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+
+            Node node = queue.poll();
+            if(node.leftChild!=null){
+                if(node.leftChild==key) {
+                    node.leftChild=null;
+                    return;
+                }
+                else{
+                    queue.offer(node.leftChild);
+                }
+            }
+            if(node.rightChild!=null){
+                if(node.rightChild==key) {
+                    node.rightChild=null;
+                    return;
+                }
+                else{
+                    queue.offer(node.rightChild);
+                }
+            }
+        }
+    }
     public void deleteNode(int key) {
 
         Node temp = null;

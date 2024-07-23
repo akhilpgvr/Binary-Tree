@@ -96,12 +96,43 @@ public class BinaryTree {
         }
     }
 
-    public void deleteNode(int data) {
+    public void deleteNode(int key) {
 
+        Node temp = null;
+        Node keyNode = null;
+        Node parent = null;
+        if(root == null) {
+            System.out.println("Tree is Empty");
+            return;
+        }
+        if(root.leftChild==null && root.rightChild==null) {
+            if(root.data == key) root=null;
+            else return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
 
-    }
-    public Node rightMostNode(Node root){
-        if(root.rightChild == null);
-        return null;
+            Node node = queue.poll();
+            if(node.data == key) {
+                 keyNode = node;
+            }
+            if(node.leftChild!=null) {
+                parent=node;
+                temp=node.leftChild;
+                queue.offer(temp);
+            }
+            if(node.rightChild!=null) {
+                parent=node;
+                temp=node.rightChild;
+                queue.offer(temp);
+            }
+        }
+        if(keyNode!=null && temp!=null) {
+            keyNode.data = temp.data;
+            if(parent.leftChild == temp) parent.leftChild=null;
+            if(parent.rightChild == temp) parent.rightChild=null;
+        }
+
     }
 }

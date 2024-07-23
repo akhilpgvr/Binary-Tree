@@ -39,5 +39,12 @@ public class Main {
         binaryTree.levelOrdering();
         System.out.println();
         System.out.println("...............................");
+        System.out.println("Deletion on binary tree");
+        System.out.println("...............................");
+        binaryTree.deleteNode(3);
+        binaryTree.deleteNode(1);
+        binaryTree.levelOrdering();
+        System.out.println();
+        System.out.println("...............................");
     }
 }

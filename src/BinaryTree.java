@@ -19,6 +19,9 @@ public class BinaryTree {
         //queue for tracking the nodes
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+        //traversing through tree
+        //if leftChild finds null -- insert new node to leftChild,   else add leftChild to queue
+        //if rightChild finds null -- insert new node to rightChild,  else add rightChild to queue
         while(!queue.isEmpty()) {
             Node currentNode = queue.poll();
             if(currentNode.leftChild == null) {
@@ -38,6 +41,7 @@ public class BinaryTree {
     public void inorderTraversal(Node root) {
 
         if(root == null) return;
+        //format L-D-R
         inorderTraversal(root.leftChild);
         System.out.print(" "+ root.data+ " ");
         inorderTraversal(root.rightChild);
@@ -47,6 +51,7 @@ public class BinaryTree {
     public void preorderTraversal(Node root) {
 
         if(root == null) return;
+        //format D-L-R
         System.out.print(" "+ root.data+ " ");
         preorderTraversal(root.leftChild);
         preorderTraversal(root.rightChild);
@@ -56,6 +61,7 @@ public class BinaryTree {
     public void postorderTraversal(Node root) {
 
         if(root == null) return;
+        //format L-R-D
         postorderTraversal(root.leftChild);
         postorderTraversal(root.rightChild);
         System.out.print(" "+ root.data+ " ");
@@ -78,6 +84,7 @@ public class BinaryTree {
                 System.out.println("Element Found");
                 return;
             }
+            //adding left and right child to queue for continuing traversal
             queue.offer(node.leftChild);
             queue.offer(node.rightChild);
         }
@@ -88,6 +95,7 @@ public class BinaryTree {
         if(root == null) return;
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+        //format: in the order of nodes in same level. Eg: visit nodes in level0 then visit nodes level1, ...
         while(!queue.isEmpty()) {
             Node node = queue.poll();
             System.out.print(" "+ node.data+ " ");
@@ -105,6 +113,8 @@ public class BinaryTree {
 
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+
+        //once data in right or left child is found as same --> make the node as null
         while(!queue.isEmpty()) {
 
             Node node = queue.poll();
@@ -143,6 +153,8 @@ public class BinaryTree {
         }
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+
+        //same as previous node in linkedlist
         while(!queue.isEmpty()) {
 
             Node node = queue.poll();

@@ -5,6 +5,7 @@ public class BinaryTree {
 
     Node root;
 
+    //cant use recursion -- because we need to remember the queue(all left and right child nodes)
     public void addChild(int data) {
 
         //creating new node for child
@@ -172,6 +173,7 @@ public class BinaryTree {
                 queue.offer(temp);
             }
         }
+        //keyNode = node with the key, temp will be the leftest last node .. so replace keyNode with temp and make the corresponding temp to null
         if(keyNode!=null && temp!=null) {
             keyNode.data = temp.data;
             if(parent.leftChild == temp) parent.leftChild=null;
